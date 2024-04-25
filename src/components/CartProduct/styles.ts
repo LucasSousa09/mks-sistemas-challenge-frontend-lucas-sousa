@@ -102,6 +102,7 @@ export const CartProductQuantity = styled.div`
 
     input[type=number] {
         -moz-appearance: textfield;
+             appearance: textfield;
     }
 
     grid-area: qtd;
