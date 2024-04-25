@@ -13,4 +13,8 @@ export const FooterContainer = styled.footer`
     background-color: ${(porps) => porps.theme['gray-100']};
 
     font-size: .825rem;
+
+    @media(max-width: 470px){
+        font-size: .75rem ;
+    }
 `
