@@ -3,7 +3,7 @@ import Image from "next/image"
 import { HeaderContainer, CartButton } from "./styles"
 
 import logoImg from "../../assets/logoImg.png"
-import cartIcon from '../../assets/CartIcon.svg'
+import cartIcon from '../../assets/cartIcon.svg'
 
 export function Header(){
     return (

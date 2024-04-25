@@ -9,6 +9,16 @@ export const HeaderContainer = styled.header`
 
     padding: 28px 88px 28px 65px;
     background-color: ${(props) => props.theme['blue']};
+
+    @media(max-width: 470px){
+        padding: 2px 23px 2px 20px;
+
+        > img {
+            height: 43px;
+            width: 158px;
+            object-fit: contain;
+        }
+    }
 `
 
 export const CartButton = styled.button`
@@ -23,6 +33,18 @@ export const CartButton = styled.button`
     border: none;
     border-radius: 8px;
     
-    font-size: 1.125rem;
+    font-size: 1.125rem; //18px
     font-weight: 700;
+
+    @media(max-width: 470px){
+        gap: 10px;
+        padding: 6px 14px 6px 9px;
+
+        font-size: .75rem; //12px
+
+        > img {
+            weight: 11px;
+            height: 10px;
+        }
+    }
 `
