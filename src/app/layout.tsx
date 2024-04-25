@@ -4,7 +4,11 @@ import StyledComponentsRegistry from "../lib/registry";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+  display: "swap" 
+});
 
 export const metadata: Metadata = {
   title: "MKS Sistemas | Home",
