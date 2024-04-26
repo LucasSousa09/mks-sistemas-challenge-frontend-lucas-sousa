@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import { 
     ProductContainer, 
@@ -12,24 +14,33 @@ import {
 import testImg from '../../assets/apple-watch.png'
 import shoppingBagIcon from '../../assets/shoppingBagIcon.svg'
 
-export function Product(){
+import type { Product } from '../ProductsContainer'
+import { formatPrice } from "@/utils/format-price";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/CartContextProvider";
+
+export function Product(product: Product){
+    const { updateCart } = useContext(CartContext)
+
     return (
         <ProductContainer>
             <ProductData>
-                <Image src={testImg} height={138} alt="" />
+                <Image src={product.photo} height={138} width={172} alt="" />
                 <Header>
-                    <Title>
-                        Apple Watch Series 4 GPS
+                    <Title data-testid="title">
+                        {product.name}
                     </Title>
-                    <Price>
-                        R$399
+                    <Price data-testid="price">
+                        {
+                            formatPrice(product.price)
+                        }
                     </Price>
                 </Header>
-                <Description>
-                   Redesigned from scratch and completely revised.
+                <Description data-testid="description">
+                   {product.description}
                 </Description>
             </ProductData>
-            <BuyButton>
+            <BuyButton data-testid="buy-button" onClick={() => updateCart.addNewProductToCart(product)}>
                 <Image src={shoppingBagIcon} alt="" />
                 Comprar
             </BuyButton>

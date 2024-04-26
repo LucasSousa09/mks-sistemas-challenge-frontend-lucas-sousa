@@ -20,6 +20,10 @@ export const ProductData = styled.div`
 
     padding: 18px 12px 12px 14px; //top, right, bottom, left
 
+    img{
+        object-fit: contain;
+    }
+
     @media(max-width: 470px){
         align-items: start;
         padding: 20px 13px 14px 16px;
@@ -37,6 +41,7 @@ export const Header = styled.header`
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 8px;
 
     padding: 14px 0 8px;
 
@@ -50,7 +55,14 @@ export const Header = styled.header`
 export const Title = styled.strong`
     font-weight: 400;
     width: 124px;
+    height: 38px;
 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const Price = styled.span`
@@ -74,6 +86,13 @@ export const Description = styled.span`
     width: 192px;
 
     text-align: start;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const BuyButton = styled.button`
@@ -94,4 +113,14 @@ export const BuyButton = styled.button`
     background-color: ${(props) => props.theme['blue']};
 
     border: 0;
+
+    transition: filter .2s ease;
+
+    &:hover{
+        filter: brightness(.8);
+    }
+
+    &:active{
+        opacity: .8;
+    }
 `
