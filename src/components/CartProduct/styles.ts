@@ -1,8 +1,10 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 import styled from 'styled-components'
 
-export const CartProductContainer = styled.div`
+export const CartProductContainer = styled(motion.div)`
     position: relative;
 
     display: flex;
@@ -17,6 +19,8 @@ export const CartProductContainer = styled.div`
     img {
         margin-right: 22px;
         grid-area: img;
+
+        object-fit: contain;
     }
 
     @media(max-width: 470px){
@@ -55,6 +59,16 @@ export const CloseButton = styled.button`
 
     font-size: .875rem; //14px
 
+    transition: box-shadow .2s ease;
+
+    &:hover{
+        box-shadow: 0 0 4px 2px rgba(0,0,0,0.4)
+    }
+
+    &:active{
+        transform: scale(.95);
+    }
+
     @media(max-width: 470px){
         top: 10px;
         right: 14px;
@@ -69,6 +83,10 @@ export const CloseButton = styled.button`
         
         font-size: 42px;
         line-height: 17px;
+
+        &:hover{
+            box-shadow: none;
+        }
     }
 `
 
@@ -76,7 +94,9 @@ export const CartProductName = styled.span`
     grid-area: name;
 
     display: inline-block;
-    max-width: 113px;
+
+    width: 100%;
+    max-width: 90px;
     
     margin-right: 9px;
 
@@ -116,6 +136,8 @@ export const CartProductQuantity = styled.div`
 
     margin-right: 40px;
 
+    overflow: hidden;
+
     span {
         position: absolute;
         top: -10px;
@@ -130,7 +152,17 @@ export const CartProductQuantity = styled.div`
 
         border: none;
 
-        background-color: transparent;
+        background-color: ${(props) => props.theme['white']};
+
+        transition: filter .2s ease;
+
+        &:hover{
+            filter: brightness(.9);
+        }
+
+        &:active{
+            transform: scale(.9);
+        }
     }
 
     input {
