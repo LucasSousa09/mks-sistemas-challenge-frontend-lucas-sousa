@@ -1,8 +1,12 @@
-import { GlobalStylesProvider } from "@/providers/GlobalStylesProvider";
+import { Montserrat } from "next/font/google";
 import StyledComponentsRegistry from "../lib/registry";
 
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+
+import { GlobalStylesProvider } from "@/providers/GlobalStylesProvider";
+import { ReactQueryClientProvider } from '../providers/ReactQueryClientProvider'
+
+import { CartContextProvider } from '../contexts/CartContextProvider'
 
 const montserrat = Montserrat({
   weight: ["300", "400", "700"],
@@ -21,14 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-        <StyledComponentsRegistry>
-          <GlobalStylesProvider>
-            <body className={montserrat.className}>
-              {children}
-            </body>
-          </GlobalStylesProvider>
-        </StyledComponentsRegistry>
-    </html>
+      <CartContextProvider>
+        <ReactQueryClientProvider>
+          <html lang="pt-BR">
+              <StyledComponentsRegistry>
+                <GlobalStylesProvider>
+                  <body className={montserrat.className}>
+                    {children}
+                  </body>
+                </GlobalStylesProvider>
+              </StyledComponentsRegistry>
+          </html>
+        </ReactQueryClientProvider>
+      </CartContextProvider>
   );
 }
