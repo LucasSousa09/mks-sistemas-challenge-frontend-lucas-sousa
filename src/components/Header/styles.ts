@@ -36,6 +36,16 @@ export const CartButton = styled.button`
     font-size: 1.125rem; //18px
     font-weight: 700;
 
+    transition: box-shadow .3s ease;
+
+    &:hover{
+        box-shadow: 0 0 4px 2px rgba(255,255,255, 0.5);
+    }
+
+    &:active{
+        transform: scale(0.95);
+    }
+
     @media(max-width: 470px){
         gap: 10px;
         padding: 6px 14px 6px 9px;
@@ -43,7 +53,7 @@ export const CartButton = styled.button`
         font-size: .75rem; //12px
 
         > img {
-            weight: 11px;
+            width: 11px;
             height: 10px;
         }
     }

@@ -1,18 +1,24 @@
+'use client'
+
 import Image from "next/image"
 
 import { HeaderContainer, CartButton } from "./styles"
 
 import logoImg from "../../assets/logoImg.png"
 import cartIcon from '../../assets/cartIcon.svg'
+import { useContext } from "react"
+import { CartContext } from "@/contexts/CartContextProvider"
 
 export function Header(){
+    const { toggleCart, cart } = useContext(CartContext)
+
     return (
         <HeaderContainer>
-            <Image src={logoImg} alt="MKS sistemas" />
+            <Image data-testid="logo-img" src={logoImg} alt="MKS sistemas" />
 
-            <CartButton>
+            <CartButton data-testid="cart-button" onClick={toggleCart}>
                  <Image src={cartIcon} alt="Ilustração de um carrinho de compras" />
-                 0
+                 {cart.length || 0}
             </CartButton>
         </HeaderContainer>
     )
