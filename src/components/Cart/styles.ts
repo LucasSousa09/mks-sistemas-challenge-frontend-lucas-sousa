@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.div<{$isCartOpen?: boolean}>`
     position: fixed;
 
     top: 0;
@@ -14,6 +14,10 @@ export const CartContainer = styled.div`
 
     max-width: 485px;
     width: 100%;
+
+    transform: ${(props) => props.$isCartOpen === true ? "translateX(0)" : "translateX(100%)"};
+
+    transition: transform .2s ease;
 
     @media(max-width: 470px){
         max-width: 330px;
@@ -48,6 +52,17 @@ export const CartHeader = styled.header`
         width: 38px;
         border: none;
         border-radius: 50%;
+
+        transition: background .3s ease;
+
+        &:hover{
+            color: ${(props) => props.theme['black']};
+            background-color: ${(props) => props.theme['white']};
+        }
+
+        &:active{
+            transform: scale(.95);
+        }
     }
 
     @media(max-width: 470px){
@@ -69,11 +84,18 @@ export const CartBody = styled.div`
 
     padding: 4px 60px 0 47px;
 
-    max-height: calc(100vh - 285px);
+    max-height: calc(100vh - 360px);
 
     overflow-y: auto;
+    overflow-x: hidden;
+
+    > strong{
+       color: ${(props) => props.theme['white']};
+       text-align: center;
+    }
     
     @media(max-width: 470px){
+        max-height: calc(100vh - 285px);
         padding: 0 46px 0 34px
     }
 `
@@ -117,6 +139,26 @@ export const CartFooter = styled.footer`
         background-color: ${(props) => props.theme['black']};
 
         border: none;
+
+        transition: background-color .3s ease;
+
+        &:hover{
+            color: ${(props) => props.theme['black']};
+            background-color: ${(props) => props.theme['white']};
+        }
+
+        &:active{
+            opacity: .8;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+
+            color: ${(props) => props.theme['gray-300']};
+            background-color: ${(props) => props.theme['gray-800']};
+
+            filter: brightness(.7)
+        }
     }
 
     @media(max-width: 470px){
