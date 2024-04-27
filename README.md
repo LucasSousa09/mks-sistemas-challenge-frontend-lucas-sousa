@@ -18,14 +18,14 @@
 
 ## Algumas imagens de como a aplicação ficou
 
-- Homepage versão desktop
+### Homepage versão desktop
 ![image](https://github.com/LucasSousa09/mks-sistemas-challenge-frontend-lucas-sousa/blob/main/public/1-desktop-home.webp)
 
-- Homepage versão desktop com carrinho aberto
+### Homepage versão desktop com carrinho aberto
 ![image](https://github.com/LucasSousa09/mks-sistemas-challenge-frontend-lucas-sousa/blob/main/public/2-desktop-home-cart.webp)
 
-- Homepage versão mobile
+### Homepage versão mobile
 ![image](https://github.com/LucasSousa09/mks-sistemas-challenge-frontend-lucas-sousa/blob/main/public/3-mobile-home.webp)
 
-- Homepage versão mobile com carrinho aberto
+### Homepage versão mobile com carrinho aberto
 ![image](https://github.com/LucasSousa09/mks-sistemas-challenge-frontend-lucas-sousa/blob/main/public/3-mobile-home-cart.webp)
