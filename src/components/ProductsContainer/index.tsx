@@ -1,5 +1,10 @@
+'use client'
+
+import { useQuery } from "@tanstack/react-query"
 import { Product } from "../Product"
-import { Container } from "./styles"
+import { Container, SkeletonButton, SkeletonContainer, SkeletonDescription, SkeletonHeader, SkeletonImage } from "./styles"
+import { getProducts } from "@/server/actions"
+import { easeOut, motion } from "framer-motion"
 
 export type Product = {
   id: number,
@@ -9,29 +14,44 @@ export type Product = {
   price: string,
 }
 
-export async function ProductsContainer(){
-    const res = await fetch('https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?'  + new URLSearchParams({
-        page: "1",
-        rows: "8",
-        sortBy: "id",
-        orderBy: "DESC"
-      }))
-    
-    const { products }: {products: Product[]} = await res.json()
+export function ProductsContainer(){
+    const {data, error, isFetching} = useQuery({
+        queryKey: ['products'],
+        queryFn: getProducts,
+    })
 
-    return (
+   return (
         <Container>
             {
-                products.map((product) => (
-                <Product 
-                    id={product.id}
-                    key={product.id}
-                    name={product.name}
-                    photo={product.photo}
-                    price={product.price}
-                    description={product.description}
-                />))
+                isFetching ? (
+                    <>
+                        {
+                            [1,2,3,4,5,6,7,8].map(skel => (
+                            <SkeletonContainer key={skel}>
+                                <SkeletonImage as={motion.div} transition={{repeat: Infinity, duration:3, ease:easeOut}} animate={{opacity: [1,0.3, 1]}}/>
+                                <SkeletonHeader as={motion.div} transition={{repeat: Infinity, duration:3, ease:easeOut}} animate={{opacity: [1,0.3, 1]}}/>
+                                <SkeletonDescription as={motion.div} transition={{repeat: Infinity, duration:3, ease:easeOut}} animate={{opacity: [1,0.3, 1]}}/>
+                                <SkeletonButton as={motion.div} transition={{repeat: Infinity, duration:3, ease:easeOut}} animate={{opacity: [1,0.3, 1]}}/>
+                            </SkeletonContainer>))
+                        }
+                    </>
+                ) : (
+                <>
+                    {
+                        data !== undefined &&
+                        data.map((product) => (
+                            <Product 
+                            id={product.id}
+                            key={product.id}
+                            name={product.name}
+                            photo={product.photo}
+                            price={product.price}
+                            description={product.description}
+                            />))
+                        }
+                </>)
             }
+
         </Container>
     )
 }
