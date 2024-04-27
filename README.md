@@ -1,5 +1,7 @@
 # MKS Sistemas - Frontend Challenge - Lucas Sousa
 
+- Disponível para visualização: https://mks-sistemas-challenge-frontend-lucas-sousa.vercel.app/
+
 ## O frontend de uma loja on-line
 
 - Percorra o catálogo e decida o que desejar comprar.
