@@ -4,7 +4,7 @@ import Image from "next/image"
 
 import { HeaderContainer, CartButton } from "./styles"
 
-import logoImg from "../../assets/logoImg.png"
+import logoImg from "../../assets/logoImg.webp"
 import cartIcon from '../../assets/cartIcon.svg'
 import { useContext } from "react"
 import { CartContext } from "@/contexts/CartContextProvider"
