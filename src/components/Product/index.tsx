@@ -11,7 +11,6 @@ import {
     BuyButton 
 } from "./styles";
 
-import testImg from '../../assets/apple-watch.png'
 import shoppingBagIcon from '../../assets/shoppingBagIcon.svg'
 
 import type { Product } from '../ProductsContainer'
