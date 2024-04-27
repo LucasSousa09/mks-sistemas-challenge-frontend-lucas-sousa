@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { CartContext, type CartProduct } from '../../contexts/CartContextProvider'
 
-import { motion } from 'framer-motion'
+import { easeOut, motion } from 'framer-motion'
 
 import {
     CartProductContainer,
@@ -21,7 +21,7 @@ export function CartProduct({ id, name, photo, price, quantity }: CartProduct){
     const  { updateCart } = useContext(CartContext)
 
     return (
-            <CartProductContainer as={motion.div} transition={{x:{duration: .6}}} animate={{x: [500, -50, 25, 0] }} initial={{x:500}} exit={{x: 500}}>
+            <CartProductContainer as={motion.div} transition={{x:{duration: .6, ease: easeOut}}} animate={{x: [500, -50, 25, 0]}} initial={{x:500}} exit={{x: 500}}>
                 <CloseButton data-testid="close-button" onClick={() => updateCart.removeProductFromCart(id)}>
                     x
                 </CloseButton>
